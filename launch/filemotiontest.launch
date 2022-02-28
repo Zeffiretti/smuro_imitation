@@ -1,0 +1,10 @@
+<launch>
+  <arg name="motion_command" default="motion/command"/>
+  <arg name="file_path" default="/home/lenovo/hiesh/rosws/2.txt"/>
+  <include file="$(find smuro_ft_control)/launch/ft.launch">
+    <arg name="motion_command" value="$(arg motion_command)"/>
+  </include>
+  <param name="file_path" value="$(arg file_path)" type="string"/>
+  <param name="motion_command" value="$(arg motion_command)" type="string"/>
+  <node pkg="smuro_motion" type="file_motion_node" name="file_motion_node" output="screen"/>
+</launch>

@@ -1,0 +1,9 @@
+<launch>
+    <arg name="motion_command" default="motion/command"/>
+    <!--  <include file="$(find smuro_ft_control)/launch/ft.launch">-->
+    <!--    <arg name="motion_command" value="$(arg motion_command)"/>-->
+    <!--  </include>-->
+    <node pkg="smuro_motion" type="motion_test_node" name="motion_test_node" output="screen" ns="policy_robot">
+        <param name="motion_command" value="$(arg motion_command)"/>
+    </node>
+</launch>

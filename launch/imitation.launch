@@ -1,0 +1,20 @@
+<launch>
+  <arg name="motion_command" default="motion/command"/>
+  <arg name="start_index" default="0"/>
+  <arg name="low_pass_filter_alpha" default="0.1"/>
+  <arg name="frequency" default="200"/>
+  <arg name="minimal_distance" default="0.1"/>
+  <arg name="file_path" default="none"/>
+  <!--  <arg name="file_path" default="please specify yor control file path here, and uncomment this line"/>-->
+  <!--  <include file="$(find smuro_ft_control)/launch/ft.launch">-->
+  <!--    <arg name="motion_command" value="$(arg motion_command)"/>-->
+  <!--  </include>-->
+  <node pkg="smuro_imitation" type="synchro_node" name="synchro_mitation_node" output="screen">
+    <param name="motion_command" value="$(arg motion_command)"/>
+    <param name="start_index" value="$(arg start_index)"/>
+    <param name="low_pass_filter_alpha" value="$(arg low_pass_filter_alpha)"/>
+    <param name="frequency" value="$(arg frequency)"/>
+    <param name="minimal_distance" value="$(arg minimal_distance)"/>
+    <param name="file_path" value="$(arg file_path)"/>
+  </node>
+</launch>
