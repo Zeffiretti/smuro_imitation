@@ -4,7 +4,7 @@
   <arg name="low_pass_filter_alpha" default="0.1"/>
   <arg name="frequency" default="200"/>
   <arg name="minimal_distance" default="0.1"/>
-  <arg name="file_path" default="none"/>
+  <arg name="file_path" default="/home/smurodev/ratbot/src/ratbot/smuro_io/data/data.txt"/>
   <!--  <arg name="file_path" default="please specify yor control file path here, and uncomment this line"/>-->
   <!--  <include file="$(find smuro_ft_control)/launch/ft.launch">-->
   <!--    <arg name="motion_command" value="$(arg motion_command)"/>-->

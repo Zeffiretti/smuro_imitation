@@ -82,11 +82,16 @@ void SynchroController::controlLoop(const ros::TimerEvent &evnet) {
 //  demo_joints(0) = std::min(abs(data(index, 0) * 0.3), 0.5);
 //  demo_joints(1) =
 //    std::min(-float(data(index, 0) * 0.7 + data(index, 1) + 0.1), -float(demo_joints(0)));
-  demo_joints(0) = data(index, 0) - 0.4;
+  demo_joints(0) = data(index, 0);
   demo_joints(1) = data(index, 1);
   demo_joints(2) = data(index, 2);
   demo_joints(3) = data(index, 3);
   demo_joints(4) = data(index, 4);
+//  demo_joints(0) = 0.6;
+//  demo_joints(1) = -0.3;
+//  demo_joints(2) = 0;
+//  demo_joints(3) = 0;
+//  demo_joints(4) = 0;
   demo_joints = low_pass_filter_alpha * pre_demo_joints + (1 - low_pass_filter_alpha) * demo_joints;
   pre_demo_joints = demo_joints;
 //  demo_command_.joints = smuro_msgs::jointPosFromEigen(smuro_robotics_->LimitJoint(demo_joints));
@@ -122,11 +127,16 @@ void SynchroController::controlLoop(const ros::TimerEvent &evnet) {
 //  policy_joints(3) = data(index, 11);
 //  policy_joints(4) = -data(index, 12);
 
-  policy_joints(0) = data(index, 8) - 0.4;
+  policy_joints(0) = data(index, 8);
   policy_joints(1) = data(index, 9);
   policy_joints(2) = data(index, 10);
   policy_joints(3) = data(index, 11);
   policy_joints(4) = data(index, 12);
+//  policy_joints(0) = 0.6;
+//  policy_joints(1) = -0.6;
+//  policy_joints(2) = 0;
+//  policy_joints(3) = 0;
+//  policy_joints(4) = 0;
   policy_joints = low_pass_filter_alpha * pre_policy_joints + (1 - low_pass_filter_alpha) * policy_joints;
   pre_policy_joints = policy_joints;
 //  policy_command_.joints = smuro_msgs::jointPosFromEigen(smuro_robotics_->LimitJoint(policy_joints));
@@ -141,7 +151,7 @@ void SynchroController::controlLoop(const ros::TimerEvent &evnet) {
     ROS_INFO("index: %d", index);
   }
   index += 1;
-  if (index == 2400-1) {
+  if (index == 2400 - 1) {
     index = 0;
   }
 }
